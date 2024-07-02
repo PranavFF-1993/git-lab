@@ -1,9 +1,9 @@
 # Git-lab training
-This repository contain a template python project with some industry standards/best-practices included. 
+This repository contain a template python project with some industry standards/best-practices included.
 
-For the git-lab we will use this repository to learn `git`. 
+For the git-lab we will use this repository to learn `git`.
 
-To get started it is best to mirror-clone this repository into a fresh github repository. 
+To get started it is best to mirror-clone this repository into a fresh github repository.
 
 - Login to your personal github account
   - Create an account if you don't have one already
@@ -18,6 +18,7 @@ To get started it is best to mirror-clone this repository into a fresh github re
     - windows: `Remove-Item -Path ".\git-lab.git" -Recurse -Force
     - unix: `rm -rf ./git-lab.git`
   6. Clone the newly mirrored repository: `git clone https://github.com/YOURUSERNAME/YOUR-REPO.git`
+  7. cd into newly cloned repo
 
 **_optional:_** go to your github repository. go to actions. Enable the actions.
 
@@ -28,7 +29,7 @@ Exercises:
 - Which branches are available in the repository?
 - Merge `feature/improve-readme` via a PR.
   - To learn, it's better to resolve any issues locally.
-- Merge `feature/fix-bla` via a PR  
+- Merge `feature/fix-bla` via a PR
 
 _Extra exercises:_
 
