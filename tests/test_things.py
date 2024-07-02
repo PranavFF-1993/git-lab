@@ -1,7 +1,12 @@
+import math
+
 import pytest
 from ff.examplelib.things import (
     average,
     fibonacci,
+    get_maximum_value,
+    get_median,
+    get_minimum_value,
     my_add,
     my_div,
     repeat_enthousiastically_several_times,
@@ -19,7 +24,7 @@ def test_version():
 # an example of a simple unittest.
 # the function name must start with ``test``
 # see https://docs.pytest.org
-def test_my_add():
+def test_my_add_simple():
     assert my_add(2, 3) == 5
 
 
@@ -84,3 +89,56 @@ class TestFibonacci:
 
 def test_repeat_enthousiastically_several_times():
     assert repeat_enthousiastically_several_times(4) == ("4! 4! 4! 4! 4! 4! 4! 4! 4! 4! 4! 4! ")
+
+
+# also test when things go wrong
+def test_empty_average():
+    avg = average([])
+    assert avg is math.nan
+
+
+def test_my_add():
+    assert my_add(1, 2) == 3
+    assert my_add(-1, 1) == 0
+    assert my_add(1.5, 2.5) == 4.0
+
+
+def test_my_div():
+    assert my_div(10, 2) == 5
+    assert my_div(5, 2) == 2.5
+    with pytest.raises(ValueError):
+        my_div(1, 0)
+
+
+def test_average():
+    assert average([1, 2, 3, 4, 5]) == 3
+    assert average([1]) == 1
+    assert math.isnan(average([]))
+
+
+def test_fibonacci():
+    assert fibonacci(0) == 0
+    assert fibonacci(1) == 1
+    assert fibonacci(10) == 55
+
+
+def test_get_maximum_value():
+    assert get_maximum_value([1, 2, 3, 4, 5]) == 5
+    assert get_maximum_value([-1, -2, -3, -4, -5]) == -1
+    with pytest.raises(ValueError):
+        get_maximum_value([])
+
+
+def test_get_minimum_value():
+    assert get_minimum_value([1, 2, 3, 4, 5]) == 1
+    assert get_minimum_value([-1, -2, -3, -4, -5]) == -5
+    with pytest.raises(ValueError):
+        get_minimum_value([])
+
+
+def test_get_median():
+    assert get_median([1, 2, 3, 4, 5]) == 3
+    assert get_median([1, 2, 3, 4]) == 2.5
+    assert get_median([7, 1, 3, 2, 5]) == 3
+    with pytest.raises(ValueError):
+        get_median([])
